@@ -1,16 +1,24 @@
 package backend.password_reset.model;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class AppUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    
+
     private Long id;
+
+    @NotBlank(message = "Username is required")
     private String username;
+
+    @NotBlank(message = "Password is required")
     private String password;
+
+    @NotBlank(message = "Email is required")
     private String email;
+
     private boolean enable;
 
 public AppUser () {};
