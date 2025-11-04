@@ -17,13 +17,19 @@ public class AppUserService{
         this.passwordEncoder = passwordEncoder;
     }
 
-    public void registerUser(AppUser appUser){
+    public boolean registerUser(AppUser appUser){
+
+        if(appUserRepository.findByUsername(appUser.getUsername()).isPresent()){
+            return false;
+        }
+
         String encodedPassword = passwordEncoder.encode(appUser.getPassword());
         appUser.setPassword(encodedPassword);
 
-        appUser.setEnable(true);
-
+        appUser.setEnabled(true);
         appUserRepository.save(appUser);
+
+        return true;
     }
 
 

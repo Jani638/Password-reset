@@ -2,18 +2,33 @@ package backend.password_reset.controller;
 
 import org.springframework.stereotype.Controller;
 
-import backend.password_reset.model.AppUserRepository;
+import backend.password_reset.model.AppUser;
+import backend.password_reset.service.AppUserService;
+import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
 
 
 @Controller
 public class RegistrationController {
 
-    private AppUserRepository appUserRepository;
+    private AppUserService appUserService;
 
-    public RegistrationController(AppUserRepository appUserRepository){
-        this.appUserRepository = appUserRepository;
+    public RegistrationController(AppUserService appUserService){
+        this.appUserService = appUserService;
+    }
+
+    @GetMapping("/")
+    public String home() {
+        return "registration";
+    }
+
+    @GetMapping("/home")
+    public String homePage() {
+        return "home";
     }
 
     @GetMapping("/login")
@@ -23,8 +38,20 @@ public class RegistrationController {
 
     @GetMapping("/register")
     public String register() {
-        return "register";
+        return "registration";
     }
 
+    @PostMapping("/register")
+    public String registerUser(@ModelAttribute AppUser appUser, Model model) {
+        boolean success = appUserService.registerUser(appUser);
+
+        if(!success){
+            model.addAttribute("error", "Username is reserved.");
+            return "registration";
+        }
+
+        return "redirect:/login?registered";
+    }
+    
     
 }

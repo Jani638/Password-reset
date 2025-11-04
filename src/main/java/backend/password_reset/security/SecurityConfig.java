@@ -8,9 +8,17 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import backend.password_reset.service.UserDetailServiceImpl;
+
 @Configuration
 @EnableMethodSecurity(securedEnabled = true)
 public class SecurityConfig {
+
+    private final UserDetailServiceImpl userDetailService;
+
+    public SecurityConfig(UserDetailServiceImpl userDetailService) {
+        this.userDetailService = userDetailService;
+    }
 
      @Bean
     public PasswordEncoder passwordEncoder() {
@@ -21,10 +29,16 @@ public class SecurityConfig {
     public SecurityFilterChain configure(HttpSecurity http) throws Exception{
         http
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/h2-console/**", "/register", "/css/**", "/login/**").permitAll()
+                .requestMatchers("/register", "/css/**", "/login", "/login/**", "/", "/h2-console/**").permitAll()
+                .requestMatchers("/home").authenticated()
                 .anyRequest().authenticated()
             )
-            .formLogin(form -> form.permitAll())
+            .formLogin(form -> form
+            .loginPage("/login")
+            .defaultSuccessUrl("/home", true)
+            .permitAll()
+            )
+            .userDetailsService(userDetailService)
 
             .logout(logout -> logout.permitAll());
 

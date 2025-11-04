@@ -19,16 +19,16 @@ public class AppUser {
     @NotBlank(message = "Email is required")
     private String email;
 
-    private boolean enable;
+    private boolean enabled;
 
 public AppUser () {};
 
-public AppUser(Long id, String username, String password, String email, boolean enable) {
+public AppUser(Long id, String username, String password, String email, boolean enabled) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
-        this.enable = enable;
+        this.enabled = enabled;
     }
 
     public Long getId() {
@@ -55,10 +55,10 @@ public AppUser(Long id, String username, String password, String email, boolean 
     public void setEmail(String email) {
         this.email = email;
     }
-    public boolean isEnable() {
-        return enable;
+    public boolean isEnabled() {
+        return enabled;
     }
-    public void setEnable(boolean enable) {
-        this.enable = enable;
+    public void setEnabled(boolean enable) {
+        this.enabled = enable;
     }
 }
