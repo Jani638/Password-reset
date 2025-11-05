@@ -2,8 +2,6 @@ package backend.password_reset.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
-import backend.password_reset.model.PassWordResetToken;
-
 @Entity
 public class AppUser {
 

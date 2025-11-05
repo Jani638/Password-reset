@@ -25,11 +25,12 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
+     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception{
         http
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/register", "/css/**", "/login", "/login/**", "/", "/h2-console/**").permitAll()
+                .requestMatchers("/register", "/css/**", "/login", "/login/**", "/", "/h2-console/**", 
+                                "/forgot-password", "/reset-password").permitAll()
                 .requestMatchers("/home").authenticated()
                 .anyRequest().authenticated()
             )

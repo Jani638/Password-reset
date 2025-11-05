@@ -33,13 +33,17 @@ public class PasswordResetService {
         }
 
         AppUser appUser = appUserOptional.get();
+        
+        List<PassWordResetToken> existingTokens = tokenRepository.findByAppUser(appUser);
+        if(!existingTokens.isEmpty()){
+            tokenRepository.deleteAll(existingTokens);
+        }
 
         String token = UUID.randomUUID().toString();
         
         LocalDateTime expiryDate = LocalDateTime.now().plusHours(1);
 
         PassWordResetToken resetToken = new PassWordResetToken(null, token, appUser, expiryDate);
-
 
         tokenRepository.save(resetToken);
 
