@@ -2,8 +2,12 @@ package backend.password_reset.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
+import backend.password_reset.model.PassWordResetToken;
+
 @Entity
 public class AppUser {
+
+    
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +25,10 @@ public class AppUser {
 
     private boolean enabled;
 
+    private String token;
+
+
+
 public AppUser () {};
 
 public AppUser(Long id, String username, String password, String email, boolean enabled) {
@@ -29,6 +37,7 @@ public AppUser(Long id, String username, String password, String email, boolean 
         this.password = password;
         this.email = email;
         this.enabled = enabled;
+        this.token = token;
     }
 
     public Long getId() {
@@ -60,5 +69,12 @@ public AppUser(Long id, String username, String password, String email, boolean 
     }
     public void setEnabled(boolean enable) {
         this.enabled = enable;
+    }
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

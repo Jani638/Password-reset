@@ -1,14 +1,22 @@
 package backend.password_reset.controller;
 
+import java.util.UUID;
+
 import org.springframework.stereotype.Controller;
 
 import backend.password_reset.model.AppUser;
 import backend.password_reset.service.AppUserService;
+import backend.password_reset.service.UserDetailServiceImpl;
+import jakarta.servlet.http.HttpServletRequest;
+
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
@@ -52,6 +60,7 @@ public class RegistrationController {
 
         return "redirect:/login?registered";
     }
+    
     
     
 }
