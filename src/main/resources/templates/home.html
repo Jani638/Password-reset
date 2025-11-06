@@ -7,9 +7,13 @@
         <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
     </head>
-    <body class="d-flex justify-content-center align-items-center bg-light">
+    <body class="d-flex justify-content-center align-items-center bg-light" style="height: 100vh;">
      <div>
         <H1>Welcome to the home page!</H1>
+        <br>
+            <h5>You have succesfully logged in! (Or changed your password)</h5>
+            <br>
+            <p>If you want to do it again, please click the link: <a th:href="@{/login}">back to login etc.</a></p>
        </div>
     </body>
 </html>
