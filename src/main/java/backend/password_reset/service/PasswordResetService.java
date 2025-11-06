@@ -58,8 +58,8 @@ public class PasswordResetService {
         tokenRepository.save(resetToken);
         System.out.println("[DEBUG] Token saved succesfully");
 
-        String resetLink = "http://localhost:8081/reset-password?token=" + token;
-
+        /*String resetLink = "http://localhost:8081/reset-password?token=" + token; TÄÄ LINKKI PAIKALLISEEN!!!!*/
+        String resetLink = "https://password-reset-app-a15eeefe2c4e.herokuapp.com/reset-password?token=" + token;
         emailService.sendPasswordResetEmail(email, resetLink);
         System.out.println("[EMAIL] Password reset email sent to: " + email);
 
