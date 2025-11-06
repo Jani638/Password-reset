@@ -35,7 +35,7 @@ public class PassWordResetToken {
         this.id = id;
         this.token = token;
         this.appUser = appUser;
-        this.expiryDate = LocalDateTime.now().plusHours(1);
+        this.expiryDate = LocalDateTime.now().plusMinutes(15);
         this.createdDate = LocalDateTime.now();
         this.used = false;
     }
@@ -85,6 +85,5 @@ public class PassWordResetToken {
     public void setUsed(boolean used) {
         this.used = used;
     }
-
-
+    
 }

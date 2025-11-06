@@ -5,8 +5,6 @@ import jakarta.validation.constraints.NotBlank;
 @Entity
 public class AppUser {
 
-    
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
