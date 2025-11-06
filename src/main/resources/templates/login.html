@@ -7,8 +7,9 @@
         <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
     </head>
-    <body class="d-flex justify-content-center align-items-center bg-light">
+    <body class="d-flex justify-content-center align-items-center bg-light" style="height: 100vh;">
      <div>
+        <h2>Login</h2>
         <div class="alert alert-danger" th:if="${param.error}">
             Invalid username and password.
         </div>
