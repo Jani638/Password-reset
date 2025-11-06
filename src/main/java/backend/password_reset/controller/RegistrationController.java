@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class RegistrationController {
@@ -40,7 +41,15 @@ public class RegistrationController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute AppUser appUser, Model model) {
+    public String registerUser(@ModelAttribute AppUser appUser, 
+                               @RequestParam String confirmPassword,
+                               Model model) {
+
+        if (!appUser.getPassword().equals(confirmPassword)) {
+            model.addAttribute("error", "Passwords do not match.");
+            return "registration";
+        }
+        
         boolean success = appUserService.registerUser(appUser);
 
         if(!success){
