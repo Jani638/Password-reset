@@ -1,5 +1,3 @@
-![](pics/cyber.png)
-
 # Salasanan vaihto sovellus
 Tarkoituksena luoda yksinkertainen sovellus, jossa onnistuu seuraavat asiat:
 
@@ -35,4 +33,4 @@ Tarkoituksena luoda yksinkertainen sovellus, jossa onnistuu seuraavat asiat:
 
 - Sähköpostin lähetykseen käytettävä sähköposti on tehty sovellusta varten, ja se ei ole normaalissa käytössä.
 # 
-![](pics/hox.png)
+![](pics/cyber.png)
