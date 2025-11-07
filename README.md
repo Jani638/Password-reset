@@ -11,7 +11,7 @@ Tarkoituksena luoda yksinkertainen sovellus, jossa onnistuu seuraavat asiat:
 - Heroku
 # Toiminta lyhyesti
 - Käyttäjä syöttää rekisteröinti tiedot
-'Username', Password(x2)', 'Email'.
+`Username`, `Password(x2)`, `Email`.
  → Käyttäjän tiedot tallentuu tietokantaan - salasana hashattynä.
 
 - Salasanan unohtuessa klikataan "Forgot your password?" -linkkiä
