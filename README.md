@@ -1,22 +1,38 @@
+![](pics/cyber.png)
+
 # Salasanan vaihto sovellus
 Tarkoituksena luoda yksinkertainen sovellus, jossa onnistuu seuraavat asiat:
 
-- kirjautuminen
-- rekisteröinti
-- salasanan vaihto. 
+- Rekisteröinti `username` , `password` , `email`
+- Kirjautuminen `username` , `password`
+- Salasanan vaihto `email`
 ## Tietokanta
 - H2 (ajonaikainen)
 - PostgreSql (ulkoinen)
 ## Pilvipalvelu
 - Heroku
-# Toiminta ilman emailia
+# Toiminta lyhyesti
 - Käyttäjä syöttää rekisteröinti tiedot
 'Username', Password(x2)', 'Email'.
-- -> Käyttäjän tiedot tallentuu tietokantaan - salasana hashattynä.
-- Salasanan unohtuessa voidaan klikata "Forgot your password?" -linkkiä
-- -> Käyttäjä asettaa rekisteröitymisessä käytetyn emailin, joka luo yhden tokenin (token voimassa X ajan).
-- käyttäjä menee Endpointiin: `/reset-password?token=OMA TOKEN TÄHÄN`
-- -> Avautuu `/reset-password`, jossa käyttäjä voi asettaa itselleen uuden salasanan.
-- -> Kun salasana on asetettu - vanha poistetaan ja uusi tallentuu tietokantaan hashattynä.
+ → Käyttäjän tiedot tallentuu tietokantaan - salasana hashattynä.
+
+- Salasanan unohtuessa klikataan "Forgot your password?" -linkkiä
+ → Käyttäjä asettaa rekisteröitymisessä käytetyn emailin → lähetetään reset linkki annettuun sähköpostiin, joka sisältää tokenin.
+
+- Käyttäjä menee Endpointiin: `/reset-password?token=OMA TOKEN TÄHÄN`
+ → Avautuu `/reset-password`, jossa käyttäjä voi asettaa itselleen uuden salasanan.
+
+- Salasana on asetettu → vanha poistetaan ja uusi tallentuu tietokantaan hashattynä.
+
 - Token merkitään käytetyksi: `used`, mutta jätetään tietokantaan.
-- `Tokeneita voi olla käytössä vain YKSI kerrallaan - vanha poistetaan tietokannasta ja uusi luodaan tilalle`
+
+## URL: [Password reset-app](https://password-reset-app-a15eeefe2c4e.herokuapp.com/)
+
+## Huomioitavaa:
+- Tokeneita voi olla käytössä vain `YKSI` kerrallaan!
+
+- Mikäli pyyntöjä tekee useamman kui yhden → vanha poistetaan aina tietokannasta ja uusi luodaan tilalle.
+
+- Sähköpostin lähetykseen käytettävä sähköposti on tehty sovellusta varten, ja se ei ole normaalissa käytössä.
+# 
+![](pics/hox.png)
