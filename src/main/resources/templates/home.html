@@ -10,7 +10,8 @@
     </head>
     <body class="d-flex justify-content-center align-items-center bg-light" style="height: 100vh;">
      <div>
-        <H1>Welcome to the <span sec:authentication="role"></span> page! <i class="bi bi-house-door"></i></H1>
+        <H1 sec:authorize="hasRole('ADMIN')">Welcome to the Admin's page! <i class="bi bi-house-door"></i></H1>
+        <H1 sec:authorize="hasRole('USER') and !hasRole('ADMIN')">Welcome to the User's page! <i class="bi bi-house-door"></i></H1>
         <br>
             <h5>You have succesfully logged in! (Or changed your password) <i class="bi bi-file-lock"></i></h5>
             <br>
