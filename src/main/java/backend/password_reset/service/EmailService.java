@@ -1,13 +1,24 @@
 package backend.password_reset.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import backend.password_reset.model.AppUser;
+import backend.password_reset.model.AppUserRepository;
+
 @Service
 public class EmailService {
+
+    private final AppUserRepository appUserRepository;
+
+    public EmailService(AppUserRepository appUserRepository) {
+        this.appUserRepository = appUserRepository;
+    }
 
     @Autowired
     private JavaMailSender mailSender;
@@ -15,7 +26,7 @@ public class EmailService {
     @Value("${spring.mail.username}")
     private String fromEmail;
 
-    public void sendPasswordResetEmail(String email, String resetLink){
+    public void sendPasswordResetEmail(String email, String resetLink, String username){
         try {
             System.out.println("[DEBUG] fromEmail: " + fromEmail);
             System.out.println("[DEBUG] Email to send to: " + email);
@@ -27,7 +38,9 @@ public class EmailService {
 
             message.setSubject("Password reset request");
 
-            String emailBody = "Hello there! Here is your password reset link: " + resetLink;
+            appUserRepository.findByUsername(username);
+
+            String emailBody = "Hello " + username + "! \n\nHere is your password reset link: " + resetLink;
             message.setText(emailBody);
 
 
