@@ -18,8 +18,8 @@
             <P>Sign out to do it again: <form th:action="@{/logout}" method="post">
 			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
             <p></p>
-            <table class="table table-striped table-bordered" sec:authorize="hasRole ('ADMIN')">
-                <thead class="table table-dark">
+            <table class="table table-striped table-bordered table-hover" sec:authorize="hasRole ('ADMIN')">
+                <thead>
                     <tr>
                         <th>Id</th>
                         <th>Username</th>
@@ -33,9 +33,8 @@
                         <td th:text="${appUser.username}">username</td>
                         <td th:text="${appUser.email}">email</td>
 
-                        <td ><a class="btn btn-danger" th:href="@{/delete/{id}(id=${appUser.id})}">Delete</a></td>
-
-                        <td ><a class="btn btn-primary" th:href="@{/edit/{id}(id=${appUser.id})}">Edit</a></td>
+                        <td ><a class="btn btn-danger" th:href="@{/delete/{id}(id=${appUser.id})}">Delete</a>
+                            <a class="btn btn-primary" th:href="@{/edit/{id}(id=${appUser.id})}">Edit</a></td>
                     </tr>
                 </tbody>
             </table>
