@@ -10,12 +10,11 @@
     </head>
     <body class="d-flex justify-content-center align-items-center bg-light" style="height: 100vh;">
      <div>
-        <H1>Welcome to the home page! <i class="bi bi-house-door"></i></H1>
+        <H1>Welcome to the <span sec:authentication="name"></span> page! <i class="bi bi-house-door"></i></H1>
         <br>
             <h5>You have succesfully logged in! (Or changed your password) <i class="bi bi-file-lock"></i></h5>
             <br>
-            <p>If you want to do it again, please click the link: <a th:href="@{/login}">back to login etc.</a> <i class="bi bi-box-arrow-up-right"></i></p>
-            <P>Or sign out: <form th:action="@{/logout}" method="post">
+            <P>Sign out to do it again: <form th:action="@{/logout}" method="post">
 			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
             <p></p>
             <table class="table table-striped" sec:authorize="hasRole ('ADMIN')">
