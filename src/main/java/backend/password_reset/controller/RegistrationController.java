@@ -25,11 +25,6 @@ public class RegistrationController {
         return "registration";
     }
 
-    @GetMapping("/home")
-    public String homePage() {
-        return "home";
-    }
-
     @GetMapping("/login")
     public String login() {
         return "login";

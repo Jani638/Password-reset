@@ -17,6 +17,25 @@
             <p>If you want to do it again, please click the link: <a th:href="@{/login}">back to login etc.</a> <i class="bi bi-box-arrow-up-right"></i></p>
             <P>Or sign out: <form th:action="@{/logout}" method="post">
 			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
+            <p></p>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="appUser : ${appUsers}">
+                        <td th:text="${appUser.username}">username</td>
+                        <td th:text="${appUser.email}">email</td>
+
+                        <td ><a class="btn btn-danger" th:href="@{/delete/{id}(id=${appUser.id})}">Delete</a></td>
+
+                        <td ><a class="btn btn-primary" th:href="@{/edit/{id}(id=${appUser.id})}">Edit</a></td>
+                    </tr>
+                </tbody>
+            </table>
 		</form></P>
        </div>
     </body>
