@@ -34,6 +34,6 @@ Tarkoituksena luoda yksinkertainen sovellus, jossa onnistuu seuraavat asiat:
 
 - Mikäli pyyntöjä tekee useamman kui yhden → vanha poistetaan aina tietokannasta ja uusi luodaan tilalle.
 
-- Sähköpostin lähetykseen käytettävä sähköposti on tehty sovellusta varten, eikä se ei ole normaalissa käytössä.
+- Sähköpostin lähetykseen käytettävä sähköposti on tehty sovellusta varten, eikä se ole normaalissa käytössä.
 # 
 ![](pics/cyber.png)
