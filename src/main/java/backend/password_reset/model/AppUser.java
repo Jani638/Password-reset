@@ -23,6 +23,8 @@ public class AppUser {
 
     private String token;
 
+    private String role = "USER";
+
 
 
 public AppUser () {};
@@ -72,5 +74,13 @@ public AppUser(Long id, String username, String password, String email, boolean 
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

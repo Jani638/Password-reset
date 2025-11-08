@@ -3,6 +3,8 @@ package backend.password_reset.controller;
 import backend.password_reset.model.AppUser;
 import backend.password_reset.model.AppUserRepository;
 import backend.password_reset.service.PasswordResetService;
+
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -82,12 +84,14 @@ public class PasswordResetController {
        return "redirect:/home";
    }
 
+   @PreAuthorize("hasRole('ADMIN')")
    @GetMapping("/delete/{id}")
     public String deleteUser(@PathVariable("id") Long userId) {
     appUserRepository.deleteById(userId);
     return "redirect:../home";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/edit/{id}")
     public String editUser(@PathVariable("id") Long userId, Model model) {
         AppUser appUser = appUserRepository.findById(userId).orElse(null);
