@@ -26,6 +26,7 @@ Tarkoituksena luoda yksinkertainen sovellus, jossa onnistuu seuraavat asiat:
 - Salasana on asetettu → vanha poistetaan ja uusi tallentuu tietokantaan hashattynä.
 
 - Token merkitään käytetyksi: `used`, mutta jätetään tietokantaan.
+- Sähköpostin lähettämiseen käytetään Spring Mailia
 
 ## URL: [Password reset-app](https://password-reset-app-a15eeefe2c4e.herokuapp.com/)
 
@@ -35,5 +36,6 @@ Tarkoituksena luoda yksinkertainen sovellus, jossa onnistuu seuraavat asiat:
 - Mikäli pyyntöjä tekee useamman kui yhden → vanha poistetaan aina tietokannasta ja uusi luodaan tilalle.
 
 - Sähköpostin lähetykseen käytettävä sähköposti on tehty sovellusta varten, eikä se ole normaalissa käytössä.
+- `[DEBUG]`, `[ERROR]`, `[EMAIL]` konsoli-viestit kehitystä varten jätetty.
 # 
 ![](pics/cyber.png)
